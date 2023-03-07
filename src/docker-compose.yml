@@ -1,0 +1,74 @@
+version: '3.4'
+
+services:
+  catalogdb:
+    image: arm64v8/mongo
+    container_name: catalogdb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+  basketdb:
+    image: arm64v8/redis:alpine
+    container_name: basketdb
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - /Users/zhangyuzhou/Desktop/project/microservise/distributedproject/src/Services/Basket/redis_data/redis.conf:/etc/redis/redis.conf
+    command: redis-server /etc/redis/redis.conf
+  discountdb:
+    image: postgres
+  pgadmin:
+    image: dpage/pgadmin4
+  #potainer:
+  #  image: portainer/portainer-ce
+
+  catalog.api:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    build:
+      context: .
+      dockerfile: Services/Catalog/Catalog.API/Dockerfile
+    container_name: catalog.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
+    depends_on:
+      - catalogdb
+    ports:
+      - "8000:80"
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: Services/Basket/Basket.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "CacheSettings:ConnectionString=basketdb:6379"
+    depends_on:
+      - basketdb
+    ports:
+      - "8001:80"
+
+  discount.api:
+    image: ${DOCKER_REGISTRY-}discount
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.API/Dockerfile
+  discount.grpc:
+    image: ${DOCKER_REGISTRY-}discountgrpc
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.Grpc/Dockerfile
+
+
+volumes:
+  mongo_data:
+#  portainer_data:
+  postgres_data:
+  pgadmin_data:
+
+
+

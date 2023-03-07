@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1705.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{317C8E51-86C8-4C6C-BDC9-BF7057AB3A16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{A87F9B74-5C2F-40D1-86F3-B18F2B85BFCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{2372CBD5-73B4-4FC3-A9C3-F376AF6A5671}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{54D74CFA-F752-4EAC-8136-9E2E510AB246}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{A2EFBFA0-EFFC-4248-A741-CE8B7CDDE43A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{32FCE8A8-FBA0-4D4B-90F5-4824A0D8410B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{2BC1AF1A-13CA-4E1E-94B3-DA63EB64DFF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.API", "Services\Discount\Discount.API\Discount.API.csproj", "{E3D749DD-A7D5-4590-9768-96BEB2C89286}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Grpc", "Services\Discount\Discount.Grpc\Discount.Grpc.csproj", "{438DF573-310B-4D3F-AD01-5C931A7C1DE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2372CBD5-73B4-4FC3-A9C3-F376AF6A5671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2372CBD5-73B4-4FC3-A9C3-F376AF6A5671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2372CBD5-73B4-4FC3-A9C3-F376AF6A5671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2372CBD5-73B4-4FC3-A9C3-F376AF6A5671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54D74CFA-F752-4EAC-8136-9E2E510AB246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54D74CFA-F752-4EAC-8136-9E2E510AB246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54D74CFA-F752-4EAC-8136-9E2E510AB246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54D74CFA-F752-4EAC-8136-9E2E510AB246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32FCE8A8-FBA0-4D4B-90F5-4824A0D8410B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32FCE8A8-FBA0-4D4B-90F5-4824A0D8410B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32FCE8A8-FBA0-4D4B-90F5-4824A0D8410B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32FCE8A8-FBA0-4D4B-90F5-4824A0D8410B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D749DD-A7D5-4590-9768-96BEB2C89286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D749DD-A7D5-4590-9768-96BEB2C89286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D749DD-A7D5-4590-9768-96BEB2C89286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D749DD-A7D5-4590-9768-96BEB2C89286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{438DF573-310B-4D3F-AD01-5C931A7C1DE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{438DF573-310B-4D3F-AD01-5C931A7C1DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{438DF573-310B-4D3F-AD01-5C931A7C1DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{438DF573-310B-4D3F-AD01-5C931A7C1DE4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BF908A0-D542-4E67-B5CD-C0CE1A943316}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A87F9B74-5C2F-40D1-86F3-B18F2B85BFCA} = {317C8E51-86C8-4C6C-BDC9-BF7057AB3A16}
+		{2372CBD5-73B4-4FC3-A9C3-F376AF6A5671} = {A87F9B74-5C2F-40D1-86F3-B18F2B85BFCA}
+		{A2EFBFA0-EFFC-4248-A741-CE8B7CDDE43A} = {317C8E51-86C8-4C6C-BDC9-BF7057AB3A16}
+		{32FCE8A8-FBA0-4D4B-90F5-4824A0D8410B} = {A2EFBFA0-EFFC-4248-A741-CE8B7CDDE43A}
+		{2BC1AF1A-13CA-4E1E-94B3-DA63EB64DFF2} = {317C8E51-86C8-4C6C-BDC9-BF7057AB3A16}
+		{E3D749DD-A7D5-4590-9768-96BEB2C89286} = {2BC1AF1A-13CA-4E1E-94B3-DA63EB64DFF2}
+		{438DF573-310B-4D3F-AD01-5C931A7C1DE4} = {2BC1AF1A-13CA-4E1E-94B3-DA63EB64DFF2}
+	EndGlobalSection
+EndGlobal
