@@ -20,6 +20,21 @@ services:
     command: redis-server /etc/redis/redis.conf
   discountdb:
     image: postgres
+  orderdb:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    environment:
+      ACCEPT_EULA: "1"
+      MSSQL_AGENT_ENABLED: "true"
+      MSSQL_COLLATION: "Chinese_PRC_CI_AS"
+      MSSQL_TCP_PORT: "1433"
+      MSSQL_IP_ADDRESS_ALLOW: "162.242.90.9"
+    ports:
+      - "1433:1433"
+    
+
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
   pgadmin:
     image: dpage/pgadmin4
   #potainer:
@@ -64,11 +79,31 @@ services:
       dockerfile: Services/Discount/Discount.Grpc/Dockerfile
 
 
+  ordering.api:
+    image: ${DOCKER_REGISTRY-}ordering
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
+
+  ocelotapigw:
+    image: ${DOCKER_REGISTRY-}ocelotapigw
+    build:
+      context: .
+      dockerfile: ApiGateways/OcelotApiGw/Dockerfile
+
+  shopping.aggregator:
+    image: ${DOCKER_REGISTRY-}shoppingaggregator
+    build:
+      context: .
+      dockerfile: ApiGateways/Shopping.Aggregator/Dockerfile
+
 volumes:
   mongo_data:
 #  portainer_data:
   postgres_data:
   pgadmin_data:
+
+
 
 
 

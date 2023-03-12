@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MassTransit;
 using System;
 
 namespace Basket.API
@@ -31,6 +32,7 @@ namespace Basket.API
 
             // General Configuration
             services.AddScoped<IBasketRepository, BasketRepository>();
+            services.AddAutoMapper(typeof(Startup));
 
             // Grpc Configuration
             string? discountUrl = Configuration["GrpcSettings:DiscountUrl"];
@@ -40,12 +42,12 @@ namespace Basket.API
                 services.AddScoped<DiscountGrpcService>();
             }
             // MassTransit-RabbitMQ Configuration
-            //services.AddMassTransit(config => {
-            //    config.UsingRabbitMq((ctx, cfg) => {
-            //        cfg.Host(Configuration["EventBusSettings:HostAddress"]);
-            //    });
-            //});
-            //services.AddMassTransitHostedService();
+            services.AddMassTransit(config => {
+                config.UsingRabbitMq((ctx, cfg) => {
+                    cfg.Host(Configuration["EventBusSettings:HostAddress"]);
+                });
+            });
+            services.AddMassTransitHostedService();
 
 
             services.AddControllers();
